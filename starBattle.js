@@ -105,7 +105,7 @@ function star_battle_solver(grid_orig, num_stars) {
     // In order to not crash anyone's browser, we limit how long we run this for
     var COUNTER = 0;
     var TIMED_OUT_STRING = 'TIMED OUT';
-    var COUNTER_LIMIT = 1000000;
+    var COUNTER_LIMIT = 100000;
     
     // The solver
     function solve(grid, impossibles, colrows, count=0) {
