@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<HEAD>
+<title>Star Battle Solver</title>
+<script type="text/javascript" src="starBattle.js"></script>
+</HEAD>
+<body>
+
+<h2>Star Battle Solver</h2>
+<h3>Problem</h3>
+<textarea id ="starBattleDefinition" rows=10 cols=20 style="font-family:Courier New;"></textarea>
+<p>Number of stars per region:
+<select id="starSelect">
+  <option SELECTED value=1>1</option>
+  <option value=2>2</option>
+  <option value=3>3</option>
+</select>
+</p>
+<button type="button" onclick="createAndSolve();">Solve!</button>
+<h3>Solution</h3>
+<div id="solution" class="output"></div>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    var battleString = "AAABBCB\nDABBBBB\nDAEEBGB\nDDEFFGB\nDDEFFGB\nDEEFGGG\nDDDDDDD";
+    document.getElementById("starBattleDefinition").value = battleString;
+});
+
+function createAndSolve() {
+    var solutionElt = document.getElementById('solution');
+    solutionElt.innerHTML = 'Working ...';
+    setTimeout(function() {
+        var battle_string = document.getElementById('starBattleDefinition').value;
+        console.log(battle_string);
+        var NUM_STARS = Number(document.getElementById('starSelect').value);
+        var mySolution = star_battle_solver(battle_string, NUM_STARS);
+        console.log(mySolution);
+        mySolution = mySolution.replace(/\n/g, '<br />\n');
+        solutionElt.innerHTML = '<pre>\n' + mySolution + '</pre>\n';
+    },0);
+}
+</script>
+    
+</body>
+</html>
